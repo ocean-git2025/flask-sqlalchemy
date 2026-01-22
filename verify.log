@@ -1,0 +1,386 @@
+2026-01-22 21:13:16,794 - INFO - 开始验证修复效果...
+2026-01-22 21:13:16,806 - INFO - 初始化数据库...
+2026-01-22 21:13:25,246 - ERROR - 初始化数据库失败: Traceback (most recent call last):
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\base.py", line 2108, in _exec_insertmany_context
+    dialect.do_execute(
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: table user has no column named created_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\mypython\pythonProject\TraeCN_Projects\flask-sqlalchemy-defect-2\init_db.py", line 23, in <module>
+    db.session.commit()
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\scoping.py", line 554, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\session.py", line 1923, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\session.py", line 1239, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\session.py", line 1214, in _prepare_impl
+    self.session.flush()
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\session.py", line 4179, in flush
+    self._flush(objects)
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\session.py", line 4314, in _flush
+    with util.safe_reraise():
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\session.py", line 4275, in _flush
+    flush_context.execute()
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1136, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\base.py", line 1412, in execute
+    return meth(
+           ^^^^^
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\sql\elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\base.py", line 1635, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\base.py", line 1839, in _execute_context
+    return self._exec_insertmany_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\base.py", line 2116, in _exec_insertmany_context
+    self._handle_dbapi_exception(
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\base.py", line 2108, in _exec_insertmany_context
+    dialect.do_execute(
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) table user has no column named created_at
+[SQL: INSERT INTO user (username, email, created_at, updated_at) VALUES (?, ?, ?, ?) RETURNING id]
+[parameters: ('user1', 'user1@example.com', '2026-01-22 13:13:24.563396', '2026-01-22 13:13:24.563396')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+2026-01-22 21:13:25,295 - INFO - 
+================================================================================
+2026-01-22 21:13:25,320 - INFO - 验证修复效果报告
+2026-01-22 21:13:25,324 - INFO - ================================================================================
+2026-01-22 21:13:25,326 - INFO - 总测试数: 0
+2026-01-22 21:13:25,333 - INFO - 通过测试: 0
+2026-01-22 21:13:25,340 - INFO - 失败测试: 0
+2026-01-22 21:13:25,346 - INFO - 
+2026-01-22 21:13:25,349 - INFO - 
+2026-01-22 21:13:25,352 - INFO - 所有测试通过！修复效果验证成功。
+2026-01-22 21:13:25,353 - INFO - ================================================================================
+2026-01-22 21:22:44,621 - INFO - 开始验证修复效果...
+2026-01-22 21:22:44,623 - INFO - 初始化数据库...
+2026-01-22 21:22:48,123 - ERROR - 初始化数据库失败: Traceback (most recent call last):
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\base.py", line 2108, in _exec_insertmany_context
+    dialect.do_execute(
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: table user has no column named created_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\mypython\pythonProject\TraeCN_Projects\flask-sqlalchemy-defect-2\init_db.py", line 23, in <module>
+    db.session.commit()
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\scoping.py", line 554, in commit
+    return self._proxied.commit()
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\session.py", line 1923, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\session.py", line 1239, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\session.py", line 1214, in _prepare_impl
+    self.session.flush()
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\session.py", line 4179, in flush
+    self._flush(objects)
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\session.py", line 4314, in _flush
+    with util.safe_reraise():
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\session.py", line 4275, in _flush
+    flush_context.execute()
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1136, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\base.py", line 1412, in execute
+    return meth(
+           ^^^^^
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\sql\elements.py", line 516, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\base.py", line 1635, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\base.py", line 1839, in _execute_context
+    return self._exec_insertmany_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\base.py", line 2116, in _exec_insertmany_context
+    self._handle_dbapi_exception(
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\base.py", line 2339, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\base.py", line 2108, in _exec_insertmany_context
+    dialect.do_execute(
+  File "D:\AllEnvironments\conda_envs\projects\trae_cn_py311\Lib\site-packages\sqlalchemy\engine\default.py", line 921, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) table user has no column named created_at
+[SQL: INSERT INTO user (username, email, created_at, updated_at) VALUES (?, ?, ?, ?) RETURNING id]
+[parameters: ('user1', 'user1@example.com', '2026-01-22 13:22:47.847796', '2026-01-22 13:22:47.847796')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+2026-01-22 21:22:48,143 - INFO - 
+================================================================================
+2026-01-22 21:22:48,144 - INFO - 验证修复效果报告
+2026-01-22 21:22:48,144 - INFO - ================================================================================
+2026-01-22 21:22:48,145 - INFO - 总测试数: 0
+2026-01-22 21:22:48,145 - INFO - 通过测试: 0
+2026-01-22 21:22:48,146 - INFO - 失败测试: 0
+2026-01-22 21:22:48,146 - INFO - 
+2026-01-22 21:22:48,147 - INFO - 
+2026-01-22 21:22:48,147 - INFO - 所有测试通过！修复效果验证成功。
+2026-01-22 21:22:48,147 - INFO - ================================================================================
+2026-01-22 21:30:50,806 - INFO - 开始验证修复效果...
+2026-01-22 21:30:50,808 - INFO - 初始化数据库...
+2026-01-22 21:30:55,058 - INFO - 数据库初始化成功
+2026-01-22 21:30:55,058 - INFO - 启动测试服务器...
+2026-01-22 21:30:58,268 - INFO - 服务器启动成功
+2026-01-22 21:30:58,401 - INFO - 运行 API 测试...
+2026-01-22 21:30:58,534 - INFO - 测试接口: 正常分页查询 - /api/users?page=1&size=10
+2026-01-22 21:31:00,595 - INFO - 测试接口: 默认参数查询 - /api/users
+2026-01-22 21:31:02,687 - INFO - 测试接口: page=0 参数错误 - /api/users?page=0&size=10
+2026-01-22 21:31:04,468 - INFO - 测试接口: size=100 参数错误 - /api/users?page=1&size=100
+2026-01-22 21:31:06,019 - INFO - 测试接口: page=1001 参数错误 - /api/users?page=1001&size=10
+2026-01-22 21:31:07,492 - INFO - 测试接口: 非整数 page 参数 - /api/users?page=abc&size=10
+2026-01-22 21:31:08,616 - INFO - 测试接口: 非整数 size 参数 - /api/users?page=1&size=abc
+2026-01-22 21:31:10,536 - INFO - 测试接口: size=1 边界测试 - /api/users?page=1&size=1
+2026-01-22 21:31:11,963 - INFO - 测试接口: size=50 边界测试 - /api/users?page=1&size=50
+2026-01-22 21:31:13,644 - INFO - 测试接口: page=1000 边界测试 - /api/users?page=1000&size=10
+2026-01-22 21:31:15,379 - INFO - 测试数据库数据一致性...
+2026-01-22 21:31:15,384 - ERROR - 数据库文件不存在
+2026-01-22 21:31:15,385 - INFO - 停止测试服务器...
+2026-01-22 21:31:16,326 - INFO - 服务器停止成功
+2026-01-22 21:31:16,334 - INFO - 
+================================================================================
+2026-01-22 21:31:16,339 - INFO - 验证修复效果报告
+2026-01-22 21:31:16,419 - INFO - ================================================================================
+2026-01-22 21:31:16,485 - INFO - 总测试数: 11
+2026-01-22 21:31:16,532 - INFO - 通过测试: 0
+2026-01-22 21:31:16,540 - INFO - 失败测试: 11
+2026-01-22 21:31:16,565 - INFO - 
+2026-01-22 21:31:16,573 - INFO - 失败测试详情:
+2026-01-22 21:31:16,576 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:31:16,582 - INFO - 测试: 正常分页查询
+2026-01-22 21:31:16,589 - INFO - 接口: /api/users?page=1&size=10
+2026-01-22 21:31:16,594 - INFO - 期望状态: 200
+2026-01-22 21:31:16,599 - INFO - 实际状态: 500
+2026-01-22 21:31:16,600 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:31:16,612 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:31:16,628 - INFO - 测试: 默认参数查询
+2026-01-22 21:31:16,631 - INFO - 接口: /api/users
+2026-01-22 21:31:16,633 - INFO - 期望状态: 200
+2026-01-22 21:31:16,646 - INFO - 实际状态: 500
+2026-01-22 21:31:16,648 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:31:16,650 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:31:16,664 - INFO - 测试: page=0 参数错误
+2026-01-22 21:31:16,684 - INFO - 接口: /api/users?page=0&size=10
+2026-01-22 21:31:16,706 - INFO - 期望状态: 400
+2026-01-22 21:31:16,714 - INFO - 实际状态: 500
+2026-01-22 21:31:16,715 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:31:16,716 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:31:16,729 - INFO - 测试: size=100 参数错误
+2026-01-22 21:31:16,729 - INFO - 接口: /api/users?page=1&size=100
+2026-01-22 21:31:16,731 - INFO - 期望状态: 400
+2026-01-22 21:31:16,732 - INFO - 实际状态: 500
+2026-01-22 21:31:16,743 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:31:16,745 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:31:16,747 - INFO - 测试: page=1001 参数错误
+2026-01-22 21:31:16,751 - INFO - 接口: /api/users?page=1001&size=10
+2026-01-22 21:31:16,752 - INFO - 期望状态: 400
+2026-01-22 21:31:16,755 - INFO - 实际状态: 500
+2026-01-22 21:31:16,757 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:31:16,757 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:31:16,759 - INFO - 测试: 非整数 page 参数
+2026-01-22 21:31:16,760 - INFO - 接口: /api/users?page=abc&size=10
+2026-01-22 21:31:16,772 - INFO - 期望状态: 400
+2026-01-22 21:31:16,775 - INFO - 实际状态: 500
+2026-01-22 21:31:16,777 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:31:16,784 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:31:16,785 - INFO - 测试: 非整数 size 参数
+2026-01-22 21:31:16,788 - INFO - 接口: /api/users?page=1&size=abc
+2026-01-22 21:31:16,790 - INFO - 期望状态: 400
+2026-01-22 21:31:16,792 - INFO - 实际状态: 500
+2026-01-22 21:31:16,792 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:31:16,793 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:31:16,797 - INFO - 测试: size=1 边界测试
+2026-01-22 21:31:16,798 - INFO - 接口: /api/users?page=1&size=1
+2026-01-22 21:31:16,798 - INFO - 期望状态: 200
+2026-01-22 21:31:16,799 - INFO - 实际状态: 500
+2026-01-22 21:31:16,799 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:31:16,800 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:31:16,803 - INFO - 测试: size=50 边界测试
+2026-01-22 21:31:16,805 - INFO - 接口: /api/users?page=1&size=50
+2026-01-22 21:31:16,805 - INFO - 期望状态: 200
+2026-01-22 21:31:16,806 - INFO - 实际状态: 500
+2026-01-22 21:31:16,814 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:31:16,816 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:31:16,821 - INFO - 测试: page=1000 边界测试
+2026-01-22 21:31:16,824 - INFO - 接口: /api/users?page=1000&size=10
+2026-01-22 21:31:16,824 - INFO - 期望状态: 200
+2026-01-22 21:31:16,830 - INFO - 实际状态: 500
+2026-01-22 21:31:16,831 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:31:16,832 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:31:16,835 - INFO - 测试: 数据库文件存在性
+2026-01-22 21:31:16,837 - INFO - 接口: N/A
+2026-01-22 21:31:16,838 - INFO - 期望状态: N/A
+2026-01-22 21:31:16,839 - INFO - 实际状态: N/A
+2026-01-22 21:31:16,839 - INFO - 响应: N/A
+2026-01-22 21:31:16,840 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:31:16,850 - INFO - 
+2026-01-22 21:31:16,850 - WARNING - 部分测试失败，需要进一步修复。
+2026-01-22 21:31:16,851 - INFO - ================================================================================
+2026-01-22 21:58:12,776 - INFO - 开始验证修复效果...
+2026-01-22 21:58:12,801 - INFO - 初始化数据库...
+2026-01-22 21:58:21,887 - INFO - 数据库初始化成功
+2026-01-22 21:58:21,925 - INFO - 启动测试服务器...
+2026-01-22 21:58:25,359 - INFO - 服务器启动成功
+2026-01-22 21:58:25,463 - INFO - 运行 API 测试...
+2026-01-22 21:58:25,481 - INFO - 测试接口: 正常分页查询 - /api/users?page=1&size=10
+2026-01-22 21:58:28,111 - INFO - 测试接口: 默认参数查询 - /api/users
+2026-01-22 21:58:32,341 - INFO - 测试接口: page=0 参数错误 - /api/users?page=0&size=10
+2026-01-22 21:58:38,496 - INFO - 测试接口: size=100 参数错误 - /api/users?page=1&size=100
+2026-01-22 21:58:44,005 - INFO - 测试接口: page=1001 参数错误 - /api/users?page=1001&size=10
+2026-01-22 21:58:48,634 - INFO - 测试接口: 非整数 page 参数 - /api/users?page=abc&size=10
+2026-01-22 21:58:52,151 - INFO - 测试接口: 非整数 size 参数 - /api/users?page=1&size=abc
+2026-01-22 21:58:54,113 - INFO - 测试接口: size=1 边界测试 - /api/users?page=1&size=1
+2026-01-22 21:58:56,421 - INFO - 测试接口: size=50 边界测试 - /api/users?page=1&size=50
+2026-01-22 21:58:57,960 - INFO - 测试接口: page=1000 边界测试 - /api/users?page=1000&size=10
+2026-01-22 21:59:04,025 - INFO - 测试数据库数据一致性...
+2026-01-22 21:59:04,211 - ERROR - 数据库文件不存在
+2026-01-22 21:59:04,391 - INFO - 停止测试服务器...
+2026-01-22 21:59:09,328 - INFO - 服务器停止成功
+2026-01-22 21:59:09,660 - INFO - 
+================================================================================
+2026-01-22 21:59:09,770 - INFO - 验证修复效果报告
+2026-01-22 21:59:09,836 - INFO - ================================================================================
+2026-01-22 21:59:09,924 - INFO - 总测试数: 11
+2026-01-22 21:59:10,004 - INFO - 通过测试: 0
+2026-01-22 21:59:10,050 - INFO - 失败测试: 11
+2026-01-22 21:59:10,126 - INFO - 
+2026-01-22 21:59:10,192 - INFO - 失败测试详情:
+2026-01-22 21:59:10,239 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:59:10,301 - INFO - 测试: 正常分页查询
+2026-01-22 21:59:10,343 - INFO - 接口: /api/users?page=1&size=10
+2026-01-22 21:59:10,361 - INFO - 期望状态: 200
+2026-01-22 21:59:10,400 - INFO - 实际状态: 500
+2026-01-22 21:59:10,424 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:59:10,432 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:59:10,451 - INFO - 测试: 默认参数查询
+2026-01-22 21:59:10,471 - INFO - 接口: /api/users
+2026-01-22 21:59:10,486 - INFO - 期望状态: 200
+2026-01-22 21:59:10,513 - INFO - 实际状态: 500
+2026-01-22 21:59:10,542 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:59:10,576 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:59:10,601 - INFO - 测试: page=0 参数错误
+2026-01-22 21:59:10,613 - INFO - 接口: /api/users?page=0&size=10
+2026-01-22 21:59:10,637 - INFO - 期望状态: 400
+2026-01-22 21:59:10,650 - INFO - 实际状态: 500
+2026-01-22 21:59:10,701 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:59:10,788 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:59:10,803 - INFO - 测试: size=100 参数错误
+2026-01-22 21:59:10,839 - INFO - 接口: /api/users?page=1&size=100
+2026-01-22 21:59:10,932 - INFO - 期望状态: 400
+2026-01-22 21:59:10,977 - INFO - 实际状态: 500
+2026-01-22 21:59:11,027 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:59:11,110 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:59:11,238 - INFO - 测试: page=1001 参数错误
+2026-01-22 21:59:11,310 - INFO - 接口: /api/users?page=1001&size=10
+2026-01-22 21:59:11,342 - INFO - 期望状态: 400
+2026-01-22 21:59:11,670 - INFO - 实际状态: 500
+2026-01-22 21:59:12,041 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:59:12,318 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:59:12,555 - INFO - 测试: 非整数 page 参数
+2026-01-22 21:59:12,789 - INFO - 接口: /api/users?page=abc&size=10
+2026-01-22 21:59:12,932 - INFO - 期望状态: 400
+2026-01-22 21:59:13,042 - INFO - 实际状态: 500
+2026-01-22 21:59:13,157 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:59:13,249 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:59:13,362 - INFO - 测试: 非整数 size 参数
+2026-01-22 21:59:13,474 - INFO - 接口: /api/users?page=1&size=abc
+2026-01-22 21:59:13,554 - INFO - 期望状态: 400
+2026-01-22 21:59:13,670 - INFO - 实际状态: 500
+2026-01-22 21:59:13,764 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:59:13,858 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:59:13,907 - INFO - 测试: size=1 边界测试
+2026-01-22 21:59:13,956 - INFO - 接口: /api/users?page=1&size=1
+2026-01-22 21:59:14,050 - INFO - 期望状态: 200
+2026-01-22 21:59:14,187 - INFO - 实际状态: 500
+2026-01-22 21:59:14,266 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:59:14,339 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:59:14,380 - INFO - 测试: size=50 边界测试
+2026-01-22 21:59:14,431 - INFO - 接口: /api/users?page=1&size=50
+2026-01-22 21:59:14,540 - INFO - 期望状态: 200
+2026-01-22 21:59:14,582 - INFO - 实际状态: 500
+2026-01-22 21:59:14,703 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:59:14,830 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:59:14,992 - INFO - 测试: page=1000 边界测试
+2026-01-22 21:59:15,074 - INFO - 接口: /api/users?page=1000&size=10
+2026-01-22 21:59:15,118 - INFO - 期望状态: 200
+2026-01-22 21:59:15,162 - INFO - 实际状态: 500
+2026-01-22 21:59:15,224 - INFO - 响应: 拒绝访问。
+
+2026-01-22 21:59:15,268 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:59:15,297 - INFO - 测试: 数据库文件存在性
+2026-01-22 21:59:15,334 - INFO - 接口: N/A
+2026-01-22 21:59:15,358 - INFO - 期望状态: N/A
+2026-01-22 21:59:15,425 - INFO - 实际状态: N/A
+2026-01-22 21:59:15,483 - INFO - 响应: N/A
+2026-01-22 21:59:15,597 - INFO - --------------------------------------------------------------------------------
+2026-01-22 21:59:15,740 - INFO - 
+2026-01-22 21:59:15,901 - WARNING - 部分测试失败，需要进一步修复。
+2026-01-22 21:59:16,335 - INFO - ================================================================================
